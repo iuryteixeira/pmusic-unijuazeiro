@@ -1,16 +1,28 @@
 package pmusic.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Music {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gen_music")
+	@SequenceGenerator(initialValue = 10, allocationSize = 1, name = "gen_music", sequenceName = "seq_music")
 	private Integer id;
+
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
 
 	@Column(nullable = false)
 	private String name;
@@ -49,6 +61,11 @@ public class Music {
 
 	public void setTime(Double time) {
 		this.time = time;
+	}
+
+	@PrePersist
+	private void setup() {
+		this.createdAt = new Date();
 	}
 
 }

@@ -2,11 +2,16 @@ package pmusic.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
@@ -29,6 +34,13 @@ public class Music {
 
 	private Double time;
 
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "music_detail")
+	private MusicDetail detail;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Style style;
+
 	public Music() {
 
 	}
@@ -37,6 +49,22 @@ public class Music {
 		super();
 		this.name = name;
 		this.time = time;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public MusicDetail getDetail() {
+		return detail;
+	}
+
+	public void setDetail(MusicDetail detail) {
+		this.detail = detail;
 	}
 
 	public Integer getId() {
@@ -61,6 +89,14 @@ public class Music {
 
 	public void setTime(Double time) {
 		this.time = time;
+	}
+
+	public Style getStyle() {
+		return style;
+	}
+
+	public void setStyle(Style style) {
+		this.style = style;
 	}
 
 	@PrePersist

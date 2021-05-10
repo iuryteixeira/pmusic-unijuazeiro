@@ -19,7 +19,7 @@ public class ConnectionFactory {
 	}
 
 	public static void close() {
-		if (emf.isOpen())
+		if (emf != null && emf.isOpen())
 			emf.close();
 	}
 

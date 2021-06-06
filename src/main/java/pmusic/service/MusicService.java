@@ -1,7 +1,7 @@
 package pmusic.service;
 
 import pmusic.dao.MusicDAO;
-import pmusic.model.Music;
+import pmusic.model.music.Music;
 import pmusic.util.PMusicException;
 
 public class MusicService {

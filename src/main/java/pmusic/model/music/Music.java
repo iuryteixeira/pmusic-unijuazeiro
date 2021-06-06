@@ -1,4 +1,4 @@
-package pmusic.model;
+package pmusic.model.music;
 
 import java.util.Date;
 
@@ -17,8 +17,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import pmusic.model.MyEntity;
+import pmusic.model.style.Style;
+
 @Entity
-public class Music {
+public class Music implements MyEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gen_music")

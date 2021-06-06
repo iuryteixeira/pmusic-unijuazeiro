@@ -1,4 +1,4 @@
-package pmusic.model;
+package pmusic.model.style;
 
 import java.util.UUID;
 
@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import pmusic.model.MyEntity;
+
 @Entity
-public class Style {
+public class Style implements MyEntity {
 
 	@Id
 	@GeneratedValue

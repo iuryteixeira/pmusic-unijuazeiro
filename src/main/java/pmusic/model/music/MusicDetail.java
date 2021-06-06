@@ -1,4 +1,4 @@
-package pmusic.model;
+package pmusic.model.music;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import pmusic.model.MyEntity;
+
 @Entity
-public class MusicDetail {
+public class MusicDetail implements MyEntity {
 
 	@Id
 	@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "gen_md", sequenceName = "seq_md")

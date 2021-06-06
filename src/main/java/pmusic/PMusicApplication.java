@@ -5,9 +5,9 @@ import java.util.UUID;
 import pmusic.dao.MusicDAO;
 import pmusic.dao.StyleDAO;
 import pmusic.dao.util.ConnectionFactory;
-import pmusic.model.Music;
-import pmusic.model.MusicDetail;
-import pmusic.model.Style;
+import pmusic.model.music.Music;
+import pmusic.model.music.MusicDetail;
+import pmusic.model.style.Style;
 import pmusic.service.MusicService;
 import pmusic.util.PMusicException;
 
@@ -19,6 +19,7 @@ public class PMusicApplication {
 		MusicDAO musicDAO = new MusicDAO();
 		StyleDAO styleDAO = new StyleDAO();
 		try {
+			
 			Style styleStored = styleDAO.findById(UUID.fromString("1978f0dc-be18-42f3-b490-72533f6bbdb4"));
 
 			MusicDetail detail = new MusicDetail();
